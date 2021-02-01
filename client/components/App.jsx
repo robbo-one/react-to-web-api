@@ -3,11 +3,11 @@ import { getWidgets } from '../api.js'
 
 function App () {
 
-  const [widgets] = useState([])
+  const [widgets, setWidgets] = useState([])
 
   useEffect(() => {
     getWidgets()
-    .then(console.log(getWidgets()))
+    .then(setWidgets)
   }, [])
 
   return (
