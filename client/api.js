@@ -8,6 +8,8 @@ export function getWidgets () {
     .then(response => response.body)
 }
 
-export function
+export function addWidget (widget) {
+  return request
+    .post('/api/v1/widgets/').send(widget) //sets the request body to send to widget.jsx. Look for react form code from class
+}
 
-export default getWidgets
