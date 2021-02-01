@@ -14,7 +14,7 @@ function App() {
   return (
     <div>
     
-        {widgets.map(widget => {return (<Widget name={widget.name} id={widget.id} price={widget.price} mfg={widget.mfg} inStock={widget.inStock} ></Widget>)})}
+        {widgets.map(widget => {return (<Widget name={widget.name} key={widget.id} price={widget.price} mfg={widget.mfg} inStock={widget.inStock} ></Widget>)})}
     
     </div>
   )
