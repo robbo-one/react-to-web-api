@@ -5,10 +5,10 @@ function App () {
   const [widgets, setWidgets] = useState([])
 
   useEffect(() => {
-    // console.log('using the effect',)
     getWidgets()
-    .then(() => {
-      console.log(getWidgets())
+    .then(widg => {
+      console.log(widg)
+      setWidgets(widg)
     })
   }, [])
 
