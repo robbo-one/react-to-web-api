@@ -9,3 +9,4 @@ module.exports = {
 function getWidgets (db = connection) {
   return db('widgets').select()
 }
+console.log('using the effect')
