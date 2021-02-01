@@ -7,3 +7,5 @@ export function getWidgets () {
     .get(widgetUrl)
     .then(response => response.body)
 }
+
+export default getWidgets
