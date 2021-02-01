@@ -8,4 +8,6 @@ export function getWidgets () {
     .then(response => response.body)
 }
 
+export function
+
 export default getWidgets

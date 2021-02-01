@@ -6,6 +6,19 @@ function getWidgets (db = connection) {
   return db('widgets').select()
 }
 
+function addWidget(widget, db =connection) {
+  return db('widgets')
+  .insert(widget).then(ids => ids[0])
+}
+
+// function getWidget(id, db = connection) {
+//   return db('widget')
+//     .where('Widgets.id', id)
+//     .first()
+// }
+
 module.exports = {
-  getWidgets
+  getWidgets,
+  addWidget,
+  // getWidget
 }

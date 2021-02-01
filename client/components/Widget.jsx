@@ -15,9 +15,13 @@ function Widget() {
 	return (
 		<ul>
 			{widget.map(aWidget => (
-				<li key={aWidget.id}>{aWidget.name}</li>
+				<>
+				<h1>{aWidget.name}</h1>
+				<li key={aWidget.price}> Price: {aWidget.price}</li>
+				<li key={aWidget.mfg}> Manufacturer: {aWidget.mfg}</li>
+				<li key={aWidget.inStock}>Still in stock: {aWidget.inStock}</li>
+				</>
 			))}
-			<li></li>
 		</ul>
 	)
 
