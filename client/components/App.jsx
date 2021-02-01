@@ -5,7 +5,7 @@ import { getWidgets } from '../api'
 
 function App () {
 
-const [widget, setWidgets] = useState([])
+const [widgets, setWidgets] = useState([])
 
 useEffect(() => {
   getWidgets()
@@ -19,6 +19,9 @@ useEffect(() => {
   return (
     <div>
       <h1>Widgets for the win!</h1>
+      <ul>{widgets.map(widget => (
+        <li key={widget.id}>{widget.name}</li>
+      ))}</ul>
     </div>
   )
 }
