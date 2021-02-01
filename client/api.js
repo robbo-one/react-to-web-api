@@ -7,3 +7,9 @@ export function getWidgets () {
     .get(widgetUrl)
     .then(response => response.body)
 }
+
+export function addWidget () {
+  return request
+    .post(widgetUrl)
+    .then(response => response.body)
+}

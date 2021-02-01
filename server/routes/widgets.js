@@ -14,4 +14,15 @@ router.get('/', (req, res) => {
     })
 })
 
+router.post('/', (req, res) => {
+    // console.log(req.body)
+    db.addWidget(req.body)
+      .then(id=> {
+        db.getWidgetByID(id)
+          .then(widget=> {
+            res.json(widget)
+        })
+      })
+})
+
 module.exports = router
