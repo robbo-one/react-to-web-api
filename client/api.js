@@ -21,3 +21,11 @@ export function deleteWidget (widget) {
     .send(widget)
     .then(response => response.body)
 }
+
+export function updateWidget (updatedWidget) {
+  console.log(updatedWidget)
+  return request
+    .patch(widgetUrl)
+    .send(updatedWidget)
+    .then(response => response.body)
+}

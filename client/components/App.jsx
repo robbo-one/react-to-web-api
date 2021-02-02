@@ -1,46 +1,57 @@
-import React, { useState, useEffect } from "react"
-import {deleteWidget, getWidgets} from "../api"
-import {Widget} from "./Widget"
-import {AddWidget} from "./AddWidget"
-
+import React, { useState, useEffect } from "react";
+import { deleteWidget, getWidgets, updateWidget } from "../api";
+import { Widget } from "./Widget";
+import { AddWidget } from "./AddWidget";
+import { UpdateWidget } from "./UpdateWidget"
 
 function App() {
   const [widget, setWiget] = useState([])
-  const [state, setState] = useState(null)
+  const [addState, setAddState] = useState(null)
+  const [updateState, setUpdateState] = useState(null)
+
 
   const fetchData = () => {
-    getWidgets()
-      .then(widgets => {
-        setWiget(widgets)
-    })}
+    getWidgets().then((widgets) => {
+      setWiget(widgets)
+    })
+  }
 
+  const updateAddState = () => {
+    setAddState(<AddWidget next={fetchData} />)
+  }
 
-    const updateState = () => {
-      setState(<AddWidget next={fetchData} />)
-    }
+  const updateUpdateState = (w) => {
+    setUpdateState(<UpdateWidget widget={w}/>)
+  }
 
-    const handleDelete = (widget, evt) => {
-      deleteWidget(widget)
-      fetchData()
-    }
+  const handleDelete = (widget, evt) => {
+    deleteWidget(widget);
+    fetchData()
+  }
 
   useEffect(() => {
     fetchData()
   }, [])
 
-
   return (
     <div>
       <h1>Widgets for the win!</h1>
       <ul>
-        {widget.map(w => {
-          return <li key={w.id}>{Widget(w)}<button onClick={() => handleDelete(w)}>Delete</button></li>
+        {widget.map((w) => {
+          return (
+            <li key={w.id}>
+              {Widget(w)}
+              <button onClick={() => handleDelete(w)}>Delete</button>
+              <button onClick={() =>updateUpdateState(w)}>Update</button>
+            </li>
+          )
         })}
       </ul>
-      <button onClick={updateState}>Show Add Form</button>
-      {state}
+      {updateState}
+      <button onClick={updateAddState}>Show Add Form</button>
+      {addState}
     </div>
   )
 }
 
-export default App;
+export default App

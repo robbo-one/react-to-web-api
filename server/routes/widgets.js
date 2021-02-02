@@ -36,4 +36,13 @@ router.delete('/', (req, res) => {
   })
 })
 
+router.patch('/', (req, res) => {
+  const newWidget = req.body
+  // console.log(newWidget)
+  db.updateWidget(newWidget)
+  .then(() => {
+    res.send("updated")
+  })
+})
+
 module.exports = router
