@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
+
 const db = require('../db/db')
 
 router.get('/', (req, res) => {
@@ -13,5 +14,16 @@ router.get('/', (req, res) => {
       res.status(500).send(err.message)
     })
 })
+
+//add new widget - takes req body from form
+router.post('/', (req, res) => {
+  db.addNewWidget(req.body)
+  .then(id => {
+    res.json(id)  //pass updated list to client
+    })
+})
+
+
+
 
 module.exports = router

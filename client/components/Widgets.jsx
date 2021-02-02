@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react'
-import getWidgets from '../api'
+import { getWidgets } from '../api'
 
 //2 
 const Widgets = () => {
