@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Widget from "./Widget";
+import Form from "./Form";
 
 function App () {
-  
+
   return (
-    <Widget />
+    <div>
+      <Widget />
+      <Form />
+    </div>
   )
 }
 

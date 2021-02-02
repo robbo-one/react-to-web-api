@@ -14,4 +14,13 @@ router.get('/', (req, res) => {
     })
 })
 
+router.post('/', (req, res) => {
+   const widget = req.body
+  console.log(widget)
+  db.addWidget(widget)
+    .then(id => {
+      res.json({id: id})
+    })
+})
+
 module.exports = router
