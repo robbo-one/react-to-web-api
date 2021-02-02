@@ -13,3 +13,10 @@ export function addWidget (formData) {
   .send(formData)
   .then(response => response.body)
 }
+
+export function updateAWidget (formData) {
+  return request
+  .patch(widgetUrl)
+  .send(formData)
+  .then(response => response.body)
+}

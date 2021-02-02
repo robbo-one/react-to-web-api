@@ -29,4 +29,16 @@ router.post('/', (req, res) => {
     })
 })
 
+router.patch('/', (req, res) => {
+  const widget = req.body
+  console.log(widget)
+  db.updateWidget(widget)
+  .then(() => {
+    db.getAWidget(id)
+    .then(widget => {
+      res.json(widget)
+    })
+  })
+})
+
 module.exports = router

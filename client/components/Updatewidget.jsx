@@ -1,17 +1,24 @@
-import React, {useState} from 'react'
-import {addWidget} from '../api'
+import React, {useState, useEffect} from 'react'
+import { updateAWidget } from '../api'
 
 
-const Newwidget = () => {
+const Updatewidget = (props) => {
+  
+ 
 
   const[message, setMessage] = useState('')
 
   const[formData, setFormData] = useState({
-    name:'',
+    name:props.currentWidget.name,
     price:'',
     mfg:'',
     inStock:''
   })
+
+  useEffect (() => {
+    setFormData(props.currentWidget)
+
+  },[props.currentWidget])
 
   const handleChange = (e) => {
     setFormData(currentFormData => {
@@ -24,17 +31,17 @@ const Newwidget = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    addWidget(formData)
+    updateAWidget(formData)
   }
 
   return(
     <>
-      <h1>Add a new widget</h1>
+      <h1>Update a widget</h1>
       <form onSubmit={handleSubmit}>
         {message && <span className="message">{message}</span>}
           <label>
             Name:
-            <input type='text' name='name' onChange={handleChange}/>
+            <input type='text' value={formData.name} name='name' onChange={handleChange}/>
           </label>
 
         <br>
@@ -42,7 +49,7 @@ const Newwidget = () => {
 
           <label>
             Price:
-            <input type='number' name='price' onChange={handleChange}/>
+            <input type='decimal' value={formData.price} name='price' onChange={handleChange}/>
           </label>
 
         <br>
@@ -50,14 +57,14 @@ const Newwidget = () => {
 
           <label>
             Manufacturer:
-            <input type='text' name='mfg' onChange={handleChange}/>   
+            <input type='text' value={formData.mfg} name='mfg' onChange={handleChange}/>   
           </label>
           
         <br></br>
 
           <label>
             Quantity:
-            <input type='number' name='inStock' onChange={handleChange}/>
+            <input type='number' value={formData.inStock} name='inStock' onChange={handleChange}/>
           </label>
         
           <button type='submit'>Done</button>
@@ -67,5 +74,4 @@ const Newwidget = () => {
   )
 }
 
-
-export default Newwidget
+export default Updatewidget

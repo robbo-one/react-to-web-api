@@ -1,12 +1,15 @@
 import React, {useEffect, useState} from 'react'
 import request from 'superagent'
-import {getWidgets} from '../api'
+import {getWidgets, updateAWidget} from '../api'
 import Newwidget from './Addwidget'
+import Updatewidget from './Updatewidget'
 
 
 function App () {
   
   const [widgets, setWidgets] = useState([]) 
+
+  const [thisWidget, updateThisWidget] = useState(null)
 
   useEffect(() => {
     getWidget()
@@ -25,17 +28,25 @@ function App () {
     })  
   }  
 
+  const clickWidget = (aWidget) => {
+    return( 
+      updateThisWidget(aWidget)
+    )
+  }
+
   return (
     <>
       <div>
         <h1>Widgets for the win!</h1>
         <ul>
           {widgets.map(aWidget => (
-            <li key={aWidget.id}>{aWidget.name}</li>
+            <li onClick={() => clickWidget(aWidget)} key={aWidget.id}>{aWidget.name}</li>
           ))}
         </ul>
       </div>
       <Newwidget/>
+        
+      {thisWidget && <Updatewidget currentWidget={thisWidget}/>}
 
     </>
         )
