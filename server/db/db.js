@@ -4,14 +4,14 @@ const connection = require('knex')(config)
 
 module.exports = {
   getWidgets,
-  addWidget
+  nuWidget
 }
 
 function getWidgets (db = connection) {
   return db('widgets').select()
 }
 
-function addWidget (widget, db = connection) {
+function nuWidget (widget, db = connection) {
   return db('widgets').insert(widget)
   .then(ids => ids[0])
 }

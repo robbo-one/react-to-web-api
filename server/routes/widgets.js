@@ -18,10 +18,10 @@ router.post('/', (req, res) => {
   
   let widget = req.body
   
-  db.addWidget(widget)
+  db.nuWidget(widget)
     .then(id => {
       res.json({id: id})
-      // return null
+      return null
     })
     .catch(err => {
       res.status(500).send(err.message)
