@@ -19,14 +19,7 @@ router.post('/', (req,res) => {
   db.addWidget(widget)
     .then(id => {
       res.json({id: id})
-    }
-    //   id => {
-    //   db.getWidget(id[0])
-    //     .then(newWidget => {
-    //       res.json(newWidget)
-    //     })
-    // }
-    )
+    })
 })
 
 module.exports = router
