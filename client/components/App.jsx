@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getWidgets } from "../api.js";
+import { getWidgets, removeWidget } from "../api.js";
 import Widget from "./Widget";
 import AddWidget from "./AddWidget"
 function App() {
@@ -13,17 +13,29 @@ function App() {
     });
   }, []);
 
+
+  const deleteWidget = (id) => {
+
+    removeWidget(id)
+    .then((data)=>{
+      setWidgets(data);
+    })
+  }
+
   return (
     <div>
       {widgets.map((widget) => {
         return (
+          <div>
           <Widget
             name={widget.name}
             key={widget.id}
             price={widget.price}
             mfg={widget.mfg}
             inStock={widget.inStock}
-          ></Widget>
+          />
+          <button onClick={() => deleteWidget(widget.id)}>Delete</button>
+          </div>
         );
       })}
 

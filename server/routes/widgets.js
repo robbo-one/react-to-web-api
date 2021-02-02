@@ -14,7 +14,6 @@ router.get('/', (req, res) => {
     })
 })
 
-
 router.post('/', (req, res) => {
 
   console.log(req.body)
@@ -38,15 +37,15 @@ router.post('/', (req, res) => {
 
 router.delete('/', (req, res) => {
 
+  let id = req.body.id
 
-  db.addWidget(newWidget)
+  db.deleteWidget(id)
   .then(() => {
     db.getWidgets()
     .then((widgets => {
       res.json(widgets)
     }))
   })
-
 })
 
 module.exports = router
