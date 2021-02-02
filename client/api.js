@@ -14,3 +14,15 @@ export function addWidget (data) {
     .send(data)
     .then(response => response.body)
 }
+
+export function deleteWidget (id) {
+  return request
+    .delete(widgetUrl)
+    .send ({ id: id})
+    .then(response => response.body)
+}
+
+
+// export function
+// send ({ id: id})
+// const id = req.body.id

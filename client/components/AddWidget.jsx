@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import { addWidget } from '../api'
 
+
 function AddWidget (props)  {
 
 const [formData, setFormData] = useState({
@@ -23,10 +24,11 @@ const handleChange = (event) => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log("we got into handlesubmit")
+    // console.log("we got into handlesubmit")
     // console.log(formData)
     addWidget(formData)
-    props.next()
+    props.next() 
+    props.displayWidgies() 
     setFormData ({
       name: '',
       mfg: '',

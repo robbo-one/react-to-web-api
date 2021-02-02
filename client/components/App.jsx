@@ -14,17 +14,25 @@ function App () {
 
   }
   const [widgets, setWidgets]= useState([])
+  const [showButts, setShowButts] = useState(true) 
+  
+  function displayWidgies (){
+    setShowButts (!showButts)
+  }
   useEffect(() => {
-    fetchData()
+    fetchData() 
   },[])
 
   return (
     <div>
       <h1>Widgets for the win!</h1>
       {/* <Route path='/api/v1/widgets' exact component AddWidget/>       */}
-      <AddWidget next={fetchData} />
+    {(showButts && <button onClick=  {displayWidgies} >   
+      click butt to add Widgies
+    </button>)}
+    {(!showButts && <AddWidget next={fetchData} displayWidgies={displayWidgies} />)}
       {widgets.map(widget => {
-        return <Widget info = {widget} />
+        return <Widget info = {widget} next={fetchData} />
       } )}
     </div>
   )
