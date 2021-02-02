@@ -36,4 +36,17 @@ router.post('/', (req, res) => {
 
 })
 
+router.delete('/', (req, res) => {
+
+
+  db.addWidget(newWidget)
+  .then(() => {
+    db.getWidgets()
+    .then((widgets => {
+      res.json(widgets)
+    }))
+  })
+
+})
+
 module.exports = router

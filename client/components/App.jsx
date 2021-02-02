@@ -4,6 +4,7 @@ import Widget from "./Widget";
 import AddWidget from "./AddWidget"
 function App() {
   const [widgets, setWidgets] = useState([]);
+  const [button, setButton] = useState(false);
 
 
   useEffect(() => {
@@ -25,7 +26,9 @@ function App() {
           ></Widget>
         );
       })}
-      <AddWidget />
+
+      <button onClick={() => setButton(true)}>Add Widget</button>
+      {button && <AddWidget />}
     
     </div>
   );
