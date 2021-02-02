@@ -22,6 +22,13 @@ export function deleteWidget (id) {
     .then(response => response.body)
 }
 
+export function deleteWidget (data) {
+  return request
+    .patch(widgetUrl)
+    .send (data)
+    .then(response => response.body)
+}
+
 
 // export function
 // send ({ id: id})
