@@ -7,7 +7,7 @@ import { addNewWidget } from '../api'
 
 
 
-const AddWidget = () => {
+const AddWidget = (props) => {
     const [formData, setFormData] = useState({
         name: '',
         price: '',
@@ -25,13 +25,13 @@ const AddWidget = () => {
         const handleSubmit = (event) => {
             event.preventDefault()
                 addNewWidget(formData)
-                .then(getWidget)
+                .then(props.refresh)
             }
 
         return (
         <>
         <h1>Enter Details of Widget to add</h1>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}> 
             <label>Name:
                 <input type="text" name="name" onChange={handleChange} />
             </label>

@@ -9,9 +9,10 @@ export function getWidgets () {
     .then(response => response.body)//rec'd response from route, then send to widgetsjsx
 }
 
-export function addNewWidget () {
+export function addNewWidget (widget) {
   return request
-    .post(updatedWidgetList)
+    .post(widgetUrl)
+    .send(widget)
     .then(response => response.body)
     //rec'd response from route, then send to addWidget.jsx component
 }
