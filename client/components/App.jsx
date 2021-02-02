@@ -1,13 +1,13 @@
 import React from 'react';
 import Widget from "./Widget";
-import Form from "./Form";
+import AddWidget from "./AddWidget";
 
 function App () {
 
   return (
     <div>
       <Widget />
-      <Form />
+      <AddWidget />
     </div>
   )
 }
