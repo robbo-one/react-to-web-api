@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useImperativeHandle } from 'react'
 import { useState, useEffect } from 'react'
 import { getWidgets } from '../api.js'
 import AddWidget from './AddWidget.jsx'
@@ -9,6 +9,8 @@ import Widget from './Widget'
 function App () {
   const [widgets, setWidgets] = useState([])
 
+  const [adding, setAdding] = useState(false)
+
   useEffect(() => {
     // console.log('using the effect')
     getWidgets()
@@ -16,6 +18,7 @@ function App () {
         setWidgets(result)
       })
   }, [] )
+
   
   return (
     <div>
@@ -24,13 +27,17 @@ function App () {
         return (
           <ul>
             <li key={widget.id}>
-              <Widget widget={widget} />
+              <Widget widget={widget} setWidgets={setWidgets} />
             </li>
           </ul>
         )
       })}
-      <AddWidget />
-      
+      <button onClick={() => setAdding(!adding)}>
+        { adding ? 'Cancel' : 'Add widget'}
+      </button>
+      {adding && (
+        <AddWidget setWidgets={setWidgets} />
+      )}
     </div>
   )
 }

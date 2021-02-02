@@ -1,14 +1,17 @@
 import React from 'react'
 import { useState } from 'react'
-import { addWidget } from '../api'
+import { editWidget } from '../api'
 
 function AddWidget(props) {
 
+  const widget = props.widget
+
   const [formData, setFormData] = useState({
-    name: '',
-    price: null,
-    mfg: '',
-    inStock: null
+    id: widget.id,
+    name: widget.name,
+    price: widget.price,
+    mfg: widget.mfg,
+    inStock: widget.inStock
   })
 
   const handleChange = (event) => {
@@ -22,7 +25,7 @@ function AddWidget(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    addWidget(formData)
+    editWidget(formData)
       .then(res => {
         props.setWidgets(res)
       })
@@ -32,21 +35,21 @@ function AddWidget(props) {
     <form onSubmit={(event) => handleSubmit(event)}>
       <label>
         Name:
-        <input type='text' name='name' onChange={handleChange}/>
+        <input type='text' name='name' onChange={handleChange} value={widget.name} />
       </label>
       <label>
         Price:
-        <input type='text' name='price' onChange={handleChange}/>
+        <input type='text' name='price' onChange={handleChange} value={widget.price} />
       </label>
       <label>
         MFG:
-        <input type='text' name='mfg' onChange={handleChange}/>
+        <input type='text' name='mfg' onChange={handleChange} value={widget.mfg} />
       </label>
       <label>
         number in stock:
-        <input type='text' name='inStock' onChange={handleChange}/>
+        <input type='text' name='inStock' onChange={handleChange} value={widget.inStock} />
       </label>
-      <input type="submit" value="add this widget" />
+      <input type="submit" value="update this widget" />
     </form>
   )
 }

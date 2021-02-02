@@ -14,3 +14,17 @@ export function addWidget (formData) {
     .send(formData)
     .then(response => response.body)
 }
+
+export function deleteWidget (id) {
+  return request
+    .delete(widgetUrl)
+    .send( { id: id } )
+    .then(response => response.body)
+}
+
+export function editWidget (formData) {
+  return request 
+    .patch(widgetUrl)
+    .send(formData)
+    .then(response => response.body)
+}

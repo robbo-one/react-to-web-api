@@ -1,9 +1,21 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { getWidgets } from '../api.js'
+import { deleteWidget } from '../api.js'
+import EditWidget from './EditWidget'
 
 function Widget (props) {
-  // console.log(props.widget)
+
+  const [editing, setEdititing] = useState(false)
+
+  const handleClickDelete = (id) => {
+    console.log(id)
+    deleteWidget(id)
+      .then(res => {
+        console.log(res)
+        props.setWidgets(res)
+      })
+  }
+
   const widget = props.widget
   return (
     <>
@@ -14,7 +26,10 @@ function Widget (props) {
       <li>mfg: {widget.mfg}</li>
       <li>in stock: {widget.inStock}</li>
       </ul>
-    
+
+      <button onClick={() => handleClickDelete(widget.id)}>Delete</button>
+      <button onClick={()=> setEdititing(!editing)}>Edit me!</button>
+      {editing && <EditWidget widget={widget} setWidgets={props.setWidgets} />}
     </>
   )
 }

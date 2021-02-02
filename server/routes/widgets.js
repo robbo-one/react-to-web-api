@@ -25,4 +25,26 @@ router.post('/', (req, res) => {
     })
 })
 
+router.delete('/', (req, res) => {
+  const id = req.body.id
+  db.deleteWidget(id)
+    .then(result => {
+      db.getWidgets()
+        .then(widgets => {
+          res.json(widgets)
+        })
+    })  
+})
+
+router.patch('/', (req, res) => {
+  const newData = req.body
+  db.updateWidget(newData)
+    .then(result => {
+      db.getWidgets()
+        .then(widgets => {
+          res.json(widgets)
+        })
+    })
+})
+
 module.exports = router
