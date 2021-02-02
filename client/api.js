@@ -15,9 +15,9 @@ export function addWidget (widget) {
     .then(response => response.body)
 }
 
-export function deleteWidget (id) {
+export function deleteWidget (widget) {
   return request
-    .delete(widgetUrl)
-    .send(id)
+    .del(widgetUrl)
+    .send(widget)
     .then(response => response.body)
 }

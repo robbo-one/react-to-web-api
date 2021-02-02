@@ -24,10 +24,10 @@ router.post('/', (req,res) => {
 
 router.delete('/', (req, res) => {
   const id = req.body.id
-  db.deleteWidget(id)
+  db.removeWidget(id)
   .then(() => {
-    res.send("deleted")
-  })
+    res.json(widgets)
+})
 })
 
 module.exports = router
