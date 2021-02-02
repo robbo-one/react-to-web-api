@@ -14,4 +14,26 @@ router.get('/', (req, res) => {
     })
 })
 
+
+router.post('/', (req, res) => {
+
+  console.log(req.body)
+
+  const newWidget = {
+    name: req.body.name,
+    price: req.body.price,
+    mfg: req.body.mfg,
+    inStock: req.body.inStock
+  }
+
+  db.addWidget(newWidget)
+  .then(() => {
+    db.getWidgets()
+    .then((widgets => {
+      res.json(widgets)
+    }))
+  })
+
+})
+
 module.exports = router
