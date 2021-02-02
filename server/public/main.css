@@ -1,3 +1,9 @@
+body {
+  /* background-color: darkgoldenrod; */
+  background-image: url('https://i.dailymail.co.uk/1s/2020/09/12/02/33077546-0-image-a-92_1599872447995.jpg');
+  /* background-repeat: no-repeat; */
+}
+
 .widget-details .visible {
   display: block;
 }
@@ -6,3 +12,6 @@
   display: none;
 }
 
+label {
+  display: block;
+}

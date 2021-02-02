@@ -1,4 +1,3 @@
-import { response } from 'express'
 import request from 'superagent'
 
 const widgetUrl = '/api/v1/widgets/'
@@ -9,8 +8,9 @@ export function getWidgets () {
     .then(response => response.body)
 }
 
-export function addWidget () {
+export function addWidget (widgetData) {
   return request
-    .get(widgetURL)
+    .post(widgetUrl)
+    .send(widgetData)
     .then(response => response.body)
 }
