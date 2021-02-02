@@ -14,4 +14,19 @@ router.get('/', (req, res) => {
     })
 })
 
+router.post('/', (req, res) => {
+  
+  let widget = req.body
+  
+  db.addWidget(widget)
+    .then(id => {
+      res.json({id: id})
+      // return null
+    })
+    .catch(err => {
+      res.status(500).send(err.message)
+    })
+})
+
+
 module.exports = router
