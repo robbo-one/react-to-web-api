@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { addWidget, getWidgets } from '../api'
 
 const Form = (props) => {
   const [message, setMessage] = useState('')
@@ -8,7 +9,6 @@ const Form = (props) => {
     price: '',
     mfg: '',
     inStock: '',
-
   })
 
   const handleChange = (event) => {
@@ -36,7 +36,7 @@ const Form = (props) => {
   }
 
   const handleSubmit = (event) => {
-    event.preventDefault()
+    // event.preventDefault()
 
     setMessage('')
 
@@ -44,9 +44,9 @@ const Form = (props) => {
       setMessage('You need to fill out the name')
       console.log('Data is not ready')
     } else {
-      console.log('Data is ready')
-    //   console.log(formData)
-      // props.updateName(formData.name)
+      addWidget(formData)
+      console.log(formData)
+      .then(getWidgets)
     }
 
   }

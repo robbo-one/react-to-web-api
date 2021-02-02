@@ -10,8 +10,8 @@ export function getWidgets () {
 
 export function addWidget (widget) {
   return request
-    .post('/api/v1/widgets/').send(widget) 
-    //sets the request body to send to widget.jsx. 
-    //Look for react form code from class
+    .post('/api/v1/widgets/')
+    .send(widget)
+    .then(response => response.body)
 }
 

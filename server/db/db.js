@@ -11,14 +11,7 @@ function addWidget(widget, db =connection) {
   .insert(widget).then(ids => ids[0])
 }
 
-// function getWidget(id, db = connection) {
-//   return db('widget')
-//     .where('Widgets.id', id)
-//     .first()
-// }
-
 module.exports = {
   getWidgets,
   addWidget,
-  // getWidget
 }
