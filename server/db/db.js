@@ -11,7 +11,13 @@ function addWidget(widget, db =connection) {
   .insert(widget).then(ids => ids[0])
 }
 
+function deleteWidget (id, db = connection) {
+  return db('widgets')
+  .del()
+  .where("id", id)
+}
 module.exports = {
   getWidgets,
   addWidget,
+  deleteWidget
 }

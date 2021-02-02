@@ -11,7 +11,7 @@ function App () {
       <h1>Widgets for the win!</h1>
       <Widget />
       <button onClick={() => setButton(true)} >Add Widget</button>
-        { button ? <Form /> : console.log('poop')}
+        { button ? <Form /> : null }
     </div>
   )
 }

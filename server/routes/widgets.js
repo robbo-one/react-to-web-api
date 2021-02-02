@@ -22,6 +22,12 @@ router.post('/', (req,res) => {
     })
 })
 
-
+router.delete('/', (req, res) => {
+  const id = req.body.id
+  db.deleteWidget(id)
+  .then(() => {
+    res.send("deleted")
+  })
+})
 
 module.exports = router

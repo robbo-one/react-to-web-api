@@ -11,6 +11,9 @@ function Widget() {
 			)
 	}, [])
 
+	const removeWidget = (id) => {
+		console.log(id)
+	}
 
 	return (
 		<ul>
@@ -20,6 +23,7 @@ function Widget() {
 				<li key={aWidget.price}> Price: {aWidget.price}</li>
 				<li key={aWidget.mfg}> Manufacturer: {aWidget.mfg}</li>
 				<li key={aWidget.inStock}>Still in stock: {aWidget.inStock}</li>
+				<button onClick={() => removeWidget(aWidget.id)} >Delete Widget</button>
 				</>
 			))}
 		</ul>

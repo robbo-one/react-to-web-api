@@ -10,8 +10,14 @@ export function getWidgets () {
 
 export function addWidget (widget) {
   return request
-    .post('/api/v1/widgets/')
+    .post(widgetUrl)
     .send(widget)
     .then(response => response.body)
 }
 
+export function deleteWidget (id) {
+  return request
+    .delete(widgetUrl)
+    .send(id)
+    .then(response => response.body)
+}
