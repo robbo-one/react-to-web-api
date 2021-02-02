@@ -1,6 +1,5 @@
 const express = require('express')
 const router = express.Router()
-
 const db = require('../db/db')
 
 router.get('/', (req, res) => {
@@ -11,6 +10,22 @@ router.get('/', (req, res) => {
     })
     .catch(err => {
       res.status(500).send(err.message)
+    })
+})
+
+router.post('/', (req, res) => {
+  const widget = req.body
+  console.log(widget)
+  db.addWidget(widget)
+  
+    .then(id => {
+      console.log(widget)
+      db.getAWidget(id)
+      .then(widget => {
+        res.json(widget) 
+
+      }
+      )
     })
 })
 
