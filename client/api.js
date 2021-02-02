@@ -8,8 +8,9 @@ export function getWidgets () {
     .then(response => response.body)
 }
 
-export function addWidget () {
+export function addWidget (data) {
   return request
     .post(widgetUrl)
+    .send(data)
     .then(response => response.body)
 }

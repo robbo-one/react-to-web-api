@@ -6,19 +6,23 @@ import AddWidget from "./AddWidget"
 // import {Route} from 'react-router-dom'
 
 function App () {
-  const [widgets, setWidgets]= useState([])
-  useEffect(() => {
-    console.log('using the effect')
+  const fetchData = () => {
     getWidgets()
     .then(res => {
       setWidgets(res)
     })
+
+  }
+  const [widgets, setWidgets]= useState([])
+  useEffect(() => {
+    fetchData()
   },[])
+
   return (
     <div>
       <h1>Widgets for the win!</h1>
       {/* <Route path='/api/v1/widgets' exact component AddWidget/>       */}
-      <AddWidget />
+      <AddWidget next={fetchData} />
       {widgets.map(widget => {
         return <Widget info = {widget} />
       } )}
