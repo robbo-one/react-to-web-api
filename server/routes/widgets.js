@@ -19,14 +19,20 @@ router.post('/', (req, res) => {
   const price = req.body.price
   const mfg = req.body.mfg
   const inStock = req.body.inStock
-
-  console.log(req.body)
   db.addWidget(name, price, mfg, inStock)
   .then(() => {
     db.getWidgets()
     .then (widgets => {
       res.json(widgets)
     })
+  })
+})
+
+router.delete('/', (req, res) => {
+  const id = req.body.id
+  db.deleteWidget(id)
+  .then(() => {
+    res.send("wow")
   })
 })
 

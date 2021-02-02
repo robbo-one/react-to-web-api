@@ -14,3 +14,10 @@ export function addWidget (name) {
     .send(name)
     .then(response => response.body)
 }
+
+export function deleteWidget (widget) {
+  return request
+    .del(widgetUrl)
+    .send(widget)
+    .then(response => response.body)
+}
